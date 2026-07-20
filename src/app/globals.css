@@ -1,0 +1,113 @@
+@import "tailwindcss";
+
+:root {
+  --background: #f6f2e8;
+  --foreground: #163126;
+  --surface: rgba(255, 251, 242, 0.78);
+  --surface-strong: #fff8ea;
+  --muted: #647067;
+  --accent: #f08a24;
+  --accent-deep: #d5671a;
+  --accent-soft: #ffd29e;
+  --sage: #3e7b5b;
+  --teal: #1f6b68;
+  --line: rgba(22, 49, 38, 0.08);
+  --shadow: 0 24px 80px rgba(55, 48, 28, 0.14);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-surface-strong: var(--surface-strong);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-accent-deep: var(--accent-deep);
+  --color-accent-soft: var(--accent-soft);
+  --color-sage: var(--sage);
+  --color-teal: var(--teal);
+  --color-line: var(--line);
+  --font-sans: var(--font-manrope);
+  --font-serif: var(--font-fraunces);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-manrope), sans-serif;
+  background-image:
+    radial-gradient(circle at top left, rgba(240, 138, 36, 0.18), transparent 32%),
+    radial-gradient(circle at top right, rgba(31, 107, 104, 0.18), transparent 28%),
+    linear-gradient(180deg, #fff8ea 0%, #f6f2e8 44%, #efe9dc 100%);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+::selection {
+  background: rgba(240, 138, 36, 0.24);
+}
+
+.glass {
+  background: var(--surface);
+  backdrop-filter: blur(20px);
+  box-shadow: var(--shadow);
+}
+
+.metric-bar {
+  position: relative;
+  overflow: hidden;
+}
+
+.metric-bar::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.08), transparent 45%, rgba(255, 255, 255, 0.25));
+  transform: translateX(-100%);
+  animation: sweep 2.6s ease-in-out infinite;
+}
+
+@keyframes sweep {
+  to {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.reveal {
+  animation: rise 0.7s ease-out both;
+}
+
+.reveal-delay-1 {
+  animation-delay: 0.08s;
+}
+
+.reveal-delay-2 {
+  animation-delay: 0.16s;
+}
+
+.reveal-delay-3 {
+  animation-delay: 0.24s;
+}

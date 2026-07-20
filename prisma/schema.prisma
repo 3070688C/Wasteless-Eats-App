@@ -1,0 +1,85 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           String   @id @default(cuid())
+  name         String
+  email        String   @unique
+  passwordHash String
+  role         String
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model Ingredient {
+  id               String   @id @default(cuid())
+  name             String
+  category         String
+  stockLevel       Float
+  unit             String
+  dailyUsage       Float
+  forecastTomorrow Float
+  reorderPoint     Float
+  expiryDays       Int
+  supplier         String
+  trend            String
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+}
+
+model SurplusListing {
+  id                String   @id @default(cuid())
+  title             String
+  cuisine           String
+  neighbourhood     String
+  pickupStart       String
+  pickupEnd         String
+  originalPrice     Float
+  discountedPrice   Float
+  portionsRemaining Int
+  reservedCount     Int      @default(0)
+  carbonSavedKg     Float
+  status            String
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+}
+
+model PackagingOption {
+  id                 String   @id @default(cuid())
+  menuType           String
+  currentMaterial    String
+  suggestedMaterial  String
+  supplier           String
+  carbonReductionPct Float
+  costDelta          Float
+  notes              String
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+}
+
+model RewardEvent {
+  id          String   @id @default(cuid())
+  title       String
+  description String
+  points      Int
+  channel     String
+  createdAt   DateTime @default(now())
+}
+
+model WasteSnapshot {
+  id                 String   @id @default(cuid())
+  label              String
+  capturedAt         DateTime
+  foodWasteKg        Float
+  packagingWasteKg   Float
+  surplusSoldMeals   Int
+  containersReturned Int
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+}
