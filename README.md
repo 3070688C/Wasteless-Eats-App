@@ -42,4 +42,4 @@ Then open http://localhost:3000.
 ## Notes
 
 - The SQLite database is configured through `.env` with `DATABASE_URL="file:./dev.db"`.
-- Demo data lives in `prisma/seed.ts` and can be adjusted to match your Figma or presentation narrative.
+- Demo data lives in `prisma/seed.ts` and can be adjusted.
